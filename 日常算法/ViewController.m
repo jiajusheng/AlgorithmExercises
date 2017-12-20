@@ -21,12 +21,62 @@
 //    NSLog(@"哈哈哈哈哈%td",[self demotest:-12345]);
 //    NSLog(@"哈哈哈哈哈%td",[self demotest:-1234500]);
 //    NSLog(@"哈哈哈哈哈%td",[self demotest:0]);
+    
+//
+//    NSLog(@"\n\n\n%@",[self printStringWithLength:15]);
+//    NSLog(@"\n\n\n%@",[self printStringWithLength:150]);
+//    NSLog(@"\n\n\n%@",[self printStringWithLength:100]);
+//    NSLog(@"\n\n\n%@",[self printStringWithLength:99]);
+    
+    NSLog(@"\n\n\n%td",[self test3:4 :1]);
+    NSLog(@"\n\n\n%td",[self test3:1 :10]);
+    NSLog(@"\n\n\n%td",[self test3:5 :11]);
+    NSLog(@"\n\n\n%td",[self test3:1 :8]);
+    NSLog(@"\n\n\n%td",[self test3:1 :70]);
 
-    NSLog(@"\n\n\n%@",[self printStringWithLength:15]);
-    NSLog(@"\n\n\n%@",[self printStringWithLength:150]);
-    NSLog(@"\n\n\n%@",[self printStringWithLength:100]);
-    NSLog(@"\n\n\n%@",[self printStringWithLength:99]);
 }
+
+/**
+ 第三天
+
+ The Hamming distance between two integers is the number of positions at which the corresponding bits are different.
+ 
+ Given two integers x and y, calculate the Hamming distance.
+ 
+ Note:
+ 0 ≤ x, y < 231.
+ 
+ Example:
+ 
+ Input: x = 1, y = 4
+ 
+ Output: 2
+ 
+ Explanation:
+ 1   (0 0 0 1)
+ 4   (0 1 0 0)
+ ↑   ↑
+ 
+ The above arrows point to positions where the corresponding bits are different.
+ */
+- (NSInteger)test3:(NSInteger)x :(NSInteger)y{
+    // 0001     1
+    // 0010     2
+    // 0011     3
+    // 0100     4
+    // 0101     5
+    // 0110     6
+    // 0111     7
+    // 1000     8
+    // 1001     9
+    // 1010     10
+    // 1011     11
+    if ((x^y) == 0) return 0;
+
+    return (x^y)%2 + [self test:x>>1 :y>>1];
+}
+
+// 第二天
 // [https://leetcode.com/problems/hamming-distance/description/]
 - (NSArray <NSString *>*)printStringWithLength:(NSInteger)length{
     NSMutableArray *arr = [NSMutableArray array];
@@ -43,21 +93,9 @@
     }
     return [arr copy];
 }
-// 别人的写法 
-- (NSInteger)oc_invertInteger__1:(NSInteger)x{
-    NSInteger result = 0;
-    while (x!= 0) {
-        NSInteger tail = x %10;
-        NSInteger newResult = result * 10 + tail;
-//        if ((newResult - tail)/10!=result) {
-//            return 0;
-//        }
-        result =  newResult;
-        x = x/10;
-    }
-    return result;
-}
 
+
+// 第一天
 // 反转整数
 - (NSInteger)oc_invertInteger__2:(NSInteger)integer{
     if (integer > 0 ) {
@@ -82,6 +120,21 @@
         resultStr =  [resultStr stringByAppendingString:strArr[i]];
     }
     return [resultStr integerValue];
+}
+
+// 别人的写法
+- (NSInteger)oc_invertInteger__1:(NSInteger)x{
+    NSInteger result = 0;
+    while (x!= 0) {
+        NSInteger tail = x %10;
+        NSInteger newResult = result * 10 + tail;
+        //        if ((newResult - tail)/10!=result) {
+        //            return 0;
+        //        }
+        result =  newResult;
+        x = x/10;
+    }
+    return result;
 }
 
 @end
