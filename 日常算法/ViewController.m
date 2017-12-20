@@ -73,7 +73,7 @@
     // 1011     11
     if ((x^y) == 0) return 0;
 
-    return (x^y)%2 + [self test:x>>1 :y>>1];
+    return (x^y)%2 + [self test3:x>>1:y>>1];
 }
 
 // 第二天
