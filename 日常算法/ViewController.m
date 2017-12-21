@@ -15,12 +15,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    NSLog(@"哈哈哈哈哈%td",[self demotest:12345]);
-//    NSLog(@"哈哈哈哈哈%td",[self demotest:1230045]);
-//    NSLog(@"哈哈哈哈哈%td",[self demotest:123400]);
-//    NSLog(@"哈哈哈哈哈%td",[self demotest:-12345]);
-//    NSLog(@"哈哈哈哈哈%td",[self demotest:-1234500]);
-//    NSLog(@"哈哈哈哈哈%td",[self demotest:0]);
+//    NSLog(@"哈哈哈哈哈%td",[self test1:12345]);
+//    NSLog(@"哈哈哈哈哈%td",[self test1:1230045]);
+//    NSLog(@"哈哈哈哈哈%td",[self test1:123400]);
+//    NSLog(@"哈哈哈哈哈%td",[self test1:-12345]);
+//    NSLog(@"哈哈哈哈哈%td",[self test1:-1234500]);
+//    NSLog(@"哈哈哈哈哈%td",[self test1:0]);
     
 //
 //    NSLog(@"\n\n\n%@",[self printStringWithLength:15]);
@@ -28,14 +28,56 @@
 //    NSLog(@"\n\n\n%@",[self printStringWithLength:100]);
 //    NSLog(@"\n\n\n%@",[self printStringWithLength:99]);
     
-    NSLog(@"\n\n\n%td",[self test3:4 :1]);
-    NSLog(@"\n\n\n%td",[self test3:1 :10]);
-    NSLog(@"\n\n\n%td",[self test3:5 :11]);
-    NSLog(@"\n\n\n%td",[self test3:1 :8]);
-    NSLog(@"\n\n\n%td",[self test3:1 :70]);
+//    NSLog(@"\n\n\n%td",[self test3:4 :1]);
+//    NSLog(@"\n\n\n%td",[self test3:1 :10]);
+//    NSLog(@"\n\n\n%td",[self test3:5 :11]);
+//    NSLog(@"\n\n\n%td",[self test3:1 :8]);
+//    NSLog(@"\n\n\n%td",[self test3:1 :70]);
+    
+        NSLog(@"\n\n\n%d",[self test4_1:2]);
+        NSLog(@"\n\n\n%d",[self test4_1:8]);
+        NSLog(@"\n\n\n%d",[self test4_1:16]);
+        NSLog(@"\n\n\n%d",[self test4_1:32]);
+        NSLog(@"\n\n\n%d",[self test4_1:6]);
+        NSLog(@"\n\n\n%d",[self test4_1:10]);
+        NSLog(@"\n\n\n%d",[self test4_1:18]);
 
 }
 
+/**
+ 第四天
+ 231. Power of Two
+ Given an integer, write a function to determine if it is a power of two.
+
+ @param x x
+ @return  yes/no
+ */
+- (BOOL)test4:(NSInteger)x{
+    
+    float fx = (float)x;
+    if (fx<2&&fx!=0) {
+        return NO;
+    }else if(fx>2){
+        return [self test4_a:fx/2.0];
+    }else{
+        return YES;
+    }
+}
+- (BOOL)test4_a:(float)x{
+    float fx = (float)x;
+    if (fx<2) {
+        return NO;
+    }else if(fx>2){
+        return [self test4_a:fx/2.0];
+    }else{
+        return YES;
+    }
+}
+
+- (BOOL)test4_1:(NSInteger)x{
+    
+    return (x&(x-1)) == 0;
+}
 /**
  第三天
 
@@ -78,7 +120,7 @@
 
 // 第二天
 // [https://leetcode.com/problems/hamming-distance/description/]
-- (NSArray <NSString *>*)printStringWithLength:(NSInteger)length{
+- (NSArray <NSString *>*)test2:(NSInteger)length{
     NSMutableArray *arr = [NSMutableArray array];
     for (int i = 1; i <= length; i++){
         if(i%15 == 0){
@@ -97,7 +139,7 @@
 
 // 第一天
 // 反转整数
-- (NSInteger)oc_invertInteger__2:(NSInteger)integer{
+- (NSInteger)test1:(NSInteger)integer{
     if (integer > 0 ) {
         // 12345
         
