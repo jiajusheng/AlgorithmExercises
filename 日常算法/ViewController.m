@@ -34,16 +34,74 @@
 //    NSLog(@"\n\n\n%td",[self test3:1 :8]);
 //    NSLog(@"\n\n\n%td",[self test3:1 :70]);
     
-        NSLog(@"\n\n\n%d",[self test4_1:2]);
-        NSLog(@"\n\n\n%d",[self test4_1:8]);
-        NSLog(@"\n\n\n%d",[self test4_1:16]);
-        NSLog(@"\n\n\n%d",[self test4_1:32]);
-        NSLog(@"\n\n\n%d",[self test4_1:6]);
-        NSLog(@"\n\n\n%d",[self test4_1:10]);
-        NSLog(@"\n\n\n%d",[self test4_1:18]);
+//        NSLog(@"\n\n\n%d",[self test4_1:2]);
+//        NSLog(@"\n\n\n%d",[self test4_1:8]);
+//        NSLog(@"\n\n\n%d",[self test4_1:16]);
+//        NSLog(@"\n\n\n%d",[self test4_1:32]);
+//        NSLog(@"\n\n\n%d",[self test4_1:6]);
+//        NSLog(@"\n\n\n%d",[self test4_1:10]);
+//        NSLog(@"\n\n\n%d",[self test4_1:18]);
 
 }
 
+/*
+ 112. Path Sum
+第六天
+ 
+ Given a binary tree and a sum, determine if the tree has a root-to-leaf path such that adding up all the values along the path equals the given sum.
+ 
+ For example:
+ Given the below binary tree and sum = 22,
+ 5
+ / \
+ 4   8
+ /   / \
+ 11  13  4
+ /  \      \
+ 7    2      1
+ return true, as there exist a root-to-leaf path 5->4->11->2 which sum is 22.
+ 
+ */
+- (BOOL)test6WithTreeNode:(TreeNode *)treeNode andSum:(NSInteger)sum{
+    if (treeNode == nil) return  NO;
+    
+    if (treeNode.left == nil && treeNode.right == nil && sum - treeNode.current == 0 ) return YES;
+    
+    return [self test6WithTreeNode:treeNode.left andSum:sum - treeNode.current] || [self test6WithTreeNode:treeNode.right andSum:sum - treeNode.current];
+}
+/**t
+ 第五天
+ 
+ 665. Non-decreasing Array
+ 
+ Given an array with n integers, your task is to check if it could become non-decreasing by modifying at most 1 element.
+ 
+ We define an array is non-decreasing if array[i] <= array[i + 1] holds for every i (1 <= i < n).
+ 
+ Example 1:
+ Input: [4,2,3]
+ Output: True
+ Explanation: You could modify the first 4 to 1 to get a non-decreasing array.
+ Example 2:
+ Input: [4,2,1]
+ Output: False
+ Explanation: You can't get a non-decreasing array by modify at most one element.
+ Note: The n belongs to [1, 10,000].
+ 
+ */
+- (BOOL)test5:(NSArray *)arr{
+    NSInteger temp;
+    for (int i = 0; i<arr.count - 1; i++) {
+        if (arr[i]<arr[i+1]) {
+            
+        }else{
+            
+        }
+    }
+    
+    
+    return YES;
+}
 /**
  第四天
  231. Power of Two
@@ -178,5 +236,10 @@
     }
     return result;
 }
+
+@end
+
+@implementation TreeNode
+
 
 @end

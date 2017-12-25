@@ -13,3 +13,9 @@
 
 @end
 
+@interface TreeNode:NSObject
+@property(nonatomic, assign )TreeNode left;
+@property(nonatomic, assign )TreeNode right;
+@property(nonatomic, assign )NSInteger current;
+
+@end
