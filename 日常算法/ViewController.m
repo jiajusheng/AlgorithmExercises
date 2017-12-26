@@ -44,6 +44,82 @@
 
 }
 
+/* 第七天
+ 
+ 744. Find Smallest Letter Greater Than Target
+
+ Given a list of sorted characters letters containing only lowercase letters, and given a target letter target, find the smallest element in the list that is larger than the given target.
+ 
+ Letters also wrap around. For example, if the target is target = 'z' and letters = ['a', 'b'], the answer is 'a'.
+ 
+ Examples:
+ Input:
+ letters = ["c", "f", "j"]
+ target = "a"
+ Output: "c"
+ 
+ Input:
+ letters = ["c", "f", "j"]
+ target = "c"
+ Output: "f"
+ 
+ Input:
+ letters = ["c", "f", "j"]
+ target = "d"
+ Output: "f"
+ 
+ Input:
+ letters = ["c", "f", "j"]
+ target = "g"
+ Output: "j"
+ 
+ Input:
+ letters = ["c", "f", "j"]
+ target = "j"
+ Output: "c"
+ 
+ Input:
+ letters = ["c", "f", "j"]
+ target = "k"
+ Output: "c"
+ Note:
+ letters has a length in range [2, 10000].
+ letters consists of lowercase letters, and contains at least 2 unique letters.
+ target is a lowercase letter.
+ 
+ */
+- (NSUInteger)test7:(NSUInteger)x arr:(NSArray <NSNumber *>*)arr{
+    // 思路：先判断是否x 大于或者等于最后一个元素，成立那么 return arr[0]
+    
+    // 然后x++后取中间的元素(arr[m])与 arr[m] 比较，如果相等那么 return arr[m]
+
+    // 如果x < arr[m] 那么让k = m 再取 0 - m 序列中的中间位置比较
+    // 如果x > arr[m] 那么让j = m+1 再取 m+1 - count-1 序列中的中间位置比较
+    // 直到范围 j<k
+    
+    NSUInteger i = arr.count ;
+    if(x >= [arr[i -1] unsignedIntegerValue]) return [arr[0] unsignedIntegerValue];
+    
+    x++;
+    NSUInteger j = 0;
+    NSUInteger k = i - 1;// 9
+    while (j< k) {
+        NSUInteger m = j + (k-j)/2;// 4
+        NSUInteger value =  [arr[m] unsignedIntegerValue];
+        if (x ==  value) {
+            return value;
+        }
+        
+        if (x > value) {
+            j = m + 1;
+        }else{
+            k = m;
+        }
+    }
+    return [arr[k] unsignedIntegerValue];
+
+}
+
 /*
  112. Path Sum
 第六天
